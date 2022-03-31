@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"github.com/byteintellect/go_commons/entity"
 	commonsv1 "github.com/byteintellect/protos_go/commons/v1"
-	otpsv1 "github.com/byteintellect/protos_go/otps/v1"
 )
 
 type Otp struct {
@@ -19,7 +18,7 @@ func (o *Otp) GetTable() entity.DomainName {
 }
 
 func (o *Otp) ToDto() interface{} {
-	return &otpsv1.AuthOtpDto{
+	return &commonsv1.AuthOtpDto{
 		ExternalId:  o.ExternalId,
 		Status:      commonsv1.Status(o.Status),
 		PhoneNumber: o.Phone,
@@ -28,7 +27,7 @@ func (o *Otp) ToDto() interface{} {
 }
 
 func (o *Otp) FromDto(dto interface{}) (entity.Base, error) {
-	otpDto := dto.(otpsv1.AuthOtpDto)
+	otpDto := dto.(commonsv1.AuthOtpDto)
 	o.Phone = otpDto.PhoneNumber
 	o.Token = otpDto.Otp
 	return o, nil

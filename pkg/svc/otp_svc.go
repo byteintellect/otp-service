@@ -8,6 +8,7 @@ import (
 	"github.com/byteintellect/otp_svc/config"
 	"github.com/byteintellect/otp_svc/pkg/domain"
 	"github.com/byteintellect/otp_svc/pkg/repo"
+	commonsv1 "github.com/byteintellect/protos_go/commons/v1"
 	otpsv1 "github.com/byteintellect/protos_go/otps/v1"
 	"go.uber.org/zap"
 	"math/big"
@@ -46,7 +47,7 @@ func (o OtpSvc) GenerateOTPCode() (string, error) {
 	return string(byteSlice), nil
 }
 
-func (o OtpSvc) GetOtp(ctx context.Context, request *otpsv1.GetOtpForPhoneRequest) (*otpsv1.GetOtpForPhoneResponse, error) {
+func (o OtpSvc) GetOtp(ctx context.Context, request *commonsv1.GetOtpForPhoneRequest) (*commonsv1.GetOtpForPhoneResponse, error) {
 	select {
 	case <-ctx.Done():
 		return nil, errors.New("timed out")
@@ -60,13 +61,13 @@ func (o OtpSvc) GetOtp(ctx context.Context, request *otpsv1.GetOtpForPhoneReques
 		if err != nil {
 			return nil, err
 		}
-		return &otpsv1.GetOtpForPhoneResponse{
-			Response: createdOtpDomain.(*domain.Otp).ToDto().(*otpsv1.AuthOtpDto),
+		return &commonsv1.GetOtpForPhoneResponse{
+			Response: createdOtpDomain.(*domain.Otp).ToDto().(*commonsv1.AuthOtpDto),
 		}, nil
 	}
 }
 
-func (o OtpSvc) ValidateOtp(ctx context.Context, request *otpsv1.AuthValidateOtpRequest) (*otpsv1.AuthValidateOtpResponse, error) {
+func (o OtpSvc) ValidateOtp(ctx context.Context, request *commonsv1.AuthValidateOtpRequest) (*commonsv1.AuthValidateOtpResponse, error) {
 	select {
 	case <-ctx.Done():
 		return nil, errors.New("timed out")
@@ -80,7 +81,7 @@ func (o OtpSvc) ValidateOtp(ctx context.Context, request *otpsv1.AuthValidateOtp
 				o.logger.Error("error invalidating otp", zap.Error(err))
 				return nil, err
 			}
-			return &otpsv1.AuthValidateOtpResponse{
+			return &commonsv1.AuthValidateOtpResponse{
 				Valid: true,
 			}, nil
 		}

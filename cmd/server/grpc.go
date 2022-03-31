@@ -14,6 +14,7 @@ import (
 	grpcPrometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/infobloxopen/atlas-app-toolkit/gateway"
 	"github.com/infobloxopen/atlas-app-toolkit/requestid"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/reflection"
@@ -44,6 +45,9 @@ func NewGrpcServer(cfg *config.OtpServiceConfig, app *go_commons.BaseApp) (*grpc
 
 				// collection operators middleware
 				gateway.UnaryServerInterceptor(),
+
+				// trace middleware
+				otelgrpc.UnaryServerInterceptor(otelgrpc.WithTracerProvider(app.Tracer())),
 			),
 		),
 		grpc.StreamInterceptor(app.GrpcMetrics().StreamServerInterceptor()),
