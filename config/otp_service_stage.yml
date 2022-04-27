@@ -10,6 +10,7 @@ base_config:
     port: 2010
     keep_alive_time: 10
     keep_alive_time_out: 10
+    metrics_port: 2012
 
   gateway_config:
     enabled: true
