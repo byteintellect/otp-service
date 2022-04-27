@@ -1,0 +1,32 @@
+base_config:
+  app_name: "otp_service"
+  app_tokens:
+    - QA_TOKEN
+    - DEV_TOKEN
+    - UAT_TOKEN
+
+  server_config:
+    address: "0.0.0.0"
+    port: 2010
+    keep_alive_time: 10
+    keep_alive_time_out: 10
+
+  gateway_config:
+    enabled: true
+    address: "0.0.0.0"
+    port: 2011
+    url: "/otp-svc"
+    swagger_file: ""
+    endpoint: "/otp-svc/"
+
+  database_config:
+    type: "mysql"
+    host_name: "165.22.214.207"
+    port: 3306
+    user_name: otp_service_user
+    database_name: otp-service
+
+  trace_provider_url: "http://0.0.0.0:14268/api/traces"
+  log_level: DEBUG
+
+otp_length: 6

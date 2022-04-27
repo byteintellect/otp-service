@@ -12,7 +12,7 @@ IMAGE_VERSION           ?= $(GIT_COMMIT)
 SERVER_BINARY           ?= $(BUILD_PATH)/server
 SERVER_PATH             ?= $(PROJECT_ROOT)/cmd/server
 SERVER_DOCKERFILE       ?= $(DOCKERFILE_PATH)/Dockerfile
-SERVER_IMAGE            := user_service
+SERVER_IMAGE            := otp_service
 DOCKER_REGISTRY_RUL 	:= docker-registry.cashfree.com
 
 .PHONY up_migration:

@@ -1,8 +1,8 @@
 # build the server binary
 FROM golang:1.17.1-alpine3.14 AS builder
 
-ARG GITHUB_USER
-ARG GITHUB_TOKEN
+ARG GIT_USERNAME
+ARG GIT_PASSWORD
 LABEL stage=server-intermediate
 RUN apk add --no-cache ca-certificates git openssh alpine-sdk openssl
 RUN mkdir /user && \
@@ -12,8 +12,8 @@ RUN mkdir /user && \
 
 # Create a netrc file using the credentials specified using --build-arg
 RUN printf "machine github.com\n\
-    login ${GITHUB_USER}\n\
-    password ${GITHUB_TOKEN}" >> /root/.netrc \
+    login ${GIT_USERNAME}\n\
+    password ${GIT_PASSWORD}" >> /root/.netrc \
 RUN chmod 600 /root/.netrc
 RUN cat /root/.netrc
 
