@@ -27,7 +27,7 @@ func (o *Otp) ToDto() interface{} {
 }
 
 func (o *Otp) FromDto(dto interface{}) (entity.Base, error) {
-	otpDto := dto.(commonsv1.AuthOtpDto)
+	otpDto := dto.(*commonsv1.AuthOtpDto)
 	o.Phone = otpDto.PhoneNumber
 	o.Token = otpDto.Otp
 	return o, nil
