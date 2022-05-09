@@ -3,11 +3,11 @@ module github.com/byteintellect/otp_svc
 go 1.17
 
 require (
-	github.com/byteintellect/go_commons v1.0.1-0.20220428161753-09ef5a99eb15
+	github.com/byteintellect/go_commons v1.0.1-0.20220509163648-4712a6d6e859
 	github.com/byteintellect/protos_go v0.0.0-20220114052619-509cf95d8242
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
-	github.com/infobloxopen/atlas-app-toolkit v1.1.2
+	github.com/infobloxopen/atlas-app-toolkit v1.2.0
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.28.0
 	go.uber.org/zap v1.21.0
 	google.golang.org/grpc v1.46.0
@@ -35,7 +35,7 @@ require (
 	github.com/prometheus/common v0.34.0 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	go.opentelemetry.io/contrib v1.6.0 // indirect
+	go.opentelemetry.io/contrib v1.7.0 // indirect
 	go.opentelemetry.io/otel v1.7.0 // indirect
 	go.opentelemetry.io/otel/exporters/jaeger v1.7.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.7.0 // indirect
@@ -43,9 +43,9 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4 // indirect
-	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
+	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220426171045-31bebdecfb46 // indirect
+	google.golang.org/genproto v0.0.0-20220505152158-f39f71e6c8f3 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	gorm.io/driver/mysql v1.3.3 // indirect
